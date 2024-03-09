@@ -19,11 +19,25 @@ cd yolov5
 pip install -r requirements.txt
 ```
 
-
 ## 🏋️ Training
 I set up ```train.ipynb``` script for training the model from scratch. To train the model, download [Fire-Dataset](https://drive.google.com/file/d/1TQKA9nzo0BVwtmojmSusDt5j02KWzIu9/view?usp=sharing) and put it in ```datasets``` folder. This dataset contains samples from both [Fire & Smoke](https://www.kaggle.com/dataclusterlabs/fire-and-smoke-dataset) and [Fire & Guns](https://www.kaggle.com/atulyakumar98/fire-and-gun-dataset) datasets on Kaggle. I filtered out images and annotations that contain smokes & guns as well as images with low resolution, and then changed fire annotation's label in annotation files.
 ```
 python train.py --img 640 --batch 16 --epochs 10 --data ../fire_config.yaml --weights yolov5s.pt --workers 0
+```
+
+## Experiment Run Script - Long Tran
+Make sure you download the dataset in #Training first!!!
+
+To change batch size: change batch_sizes variable in the content of run_script.sh
+
+Run script: replace ```<log_file_name>``` with log file name you want 
+```
+cd Yolov5-Fire-Detection
+# Running script in background
+nohup ./run_script <log_file_name>
+
+# Check log file
+cat yolov5/<log_file_name>
 ```
 
 ## 🌱 Inference
